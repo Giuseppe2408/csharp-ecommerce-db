@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace csharpecommercedb.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20221116141340_EcommerceMigration")]
+    [Migration("20221116154537_EcommerceMigration")]
     partial class EcommerceMigration
     {
         /// <inheritdoc />
@@ -81,13 +81,13 @@ namespace csharpecommercedb.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmployeeID")
+                    b.Property<int?>("EmployeeID")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -172,15 +172,11 @@ namespace csharpecommercedb.Migrations
                 {
                     b.HasOne("Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.HasOne("Employee", "Employee")
                         .WithMany("Orders")
-                        .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeID");
 
                     b.Navigation("Customer");
 

@@ -10,12 +10,12 @@ public class Order
     public bool Status { get; set; }
 
     //relazione con customer
-    public int CustomerID { get; set; }
+    public int? CustomerID { get; set; }
     public Customer Customer { get; set; }
 
 
     //relazione con employee
-    public int EmployeeID { get; set; }
+    public int? EmployeeID { get; set; }
     public Employee Employee { get; set; }
 
 
