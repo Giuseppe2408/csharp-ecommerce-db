@@ -48,6 +48,23 @@ switch (ruoloUtente)
 
 
     case "cliente":
+        Console.WriteLine("scegli un id tra la lista degli ordini");
+        
+        List<Order> ordersList = OrderList();
+        foreach(Order order in ordersList)
+        {
+            Console.Write(order.Id + " ordine");
+            Console.WriteLine(" data: " + order.Data + " prezzo: " + order.Amount);
+        }
+        int sceltaID = Convert.ToInt32(Console.ReadLine());
+        foreach (Order order in ordersList)
+        {
+            if (order.Id == sceltaID)
+            {
+                Console.WriteLine("ok per acquistare l'ordine numero {0} inserisci i tuoi dati", order.Id);
+            }
+        }
+
         break;
 
 
